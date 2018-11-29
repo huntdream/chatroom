@@ -7,7 +7,23 @@ import './style.sass';
 
 class Index extends React.Component {
   render() {
-    return <div className="index" />;
+    return (
+      <div className="index">
+        <div className="up-wrap">
+          <div className="list-wrap">
+            <List />
+          </div>
+          <div className="message-wrap">
+            <Message />
+          </div>
+        </div>
+        <div className="down-wrap">
+          <div className="input-wrap">
+            <Input />
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './App.css';
+import './App.sass';
 import Index from './containers/Index';
 
 class App extends React.Component {

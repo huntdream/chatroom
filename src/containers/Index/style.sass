@@ -3,12 +3,21 @@
   height: 100vh
   overflow: hidden
   display: flex
-  flex-direction: column
-  .up-wrap
+  flex-direction: row
+  .left-pane
     display: flex
     flex-direction: row
-    height: 75%
-    .list-wrap
+    height: 100%
+    flex-basis: 30%
+    max-width: 240px
+    .list-container
+      height: 100%
+      width: 100%
+  .right-pane
+    display: flex
+    flex-direction: column
+    flex-basis: 70%
+    .message-container
+      flex: 1
+    .input-container
       flex-basis: 30%
-    .message-wrap
-      flex-basis: 70%

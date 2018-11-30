@@ -9,16 +9,16 @@ class Index extends React.Component {
   render() {
     return (
       <div className="index">
-        <div className="up-wrap">
-          <div className="list-wrap">
+        <div className="left-pane">
+          <div className="list-container">
             <List />
           </div>
-          <div className="message-wrap">
+        </div>
+        <div className="right-pane">
+          <div className="message-container">
             <Message />
           </div>
-        </div>
-        <div className="down-wrap">
-          <div className="input-wrap">
+          <div className="input-container">
             <Input />
           </div>
         </div>

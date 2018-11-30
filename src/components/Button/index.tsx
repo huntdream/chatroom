@@ -2,14 +2,15 @@ import * as React from 'react';
 import classNames from 'classnames';
 import './style.sass';
 
-export type ButtonType = 'button' | 'submit' | 'reset';
+export type ButtonTypes = 'button' | 'submit' | 'reset';
+export type ButtonColors = 'primary';
 
 export interface ButtonProps {
   children?: React.ReactNode;
-  color?: string;
+  color?: ButtonColors;
   icon?: string;
   prefix?: string;
-  type?: ButtonType;
+  type?: ButtonTypes;
 }
 
 export type Props = {

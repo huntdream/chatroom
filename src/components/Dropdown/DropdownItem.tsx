@@ -19,9 +19,9 @@ class DropdownItem extends React.Component<Props, object> {
   render() {
     const { children } = this.props;
     return (
-      <div className="dropdown-item" onClick={this.handleClick}>
+      <li className="dropdown-item" onClick={this.handleClick}>
         {children}
-      </div>
+      </li>
     );
   }
 }

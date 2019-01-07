@@ -5,6 +5,7 @@ import { lazy } from "react";
  * path
  * name
  * component
+ * exact
  * children
  */
 
@@ -12,6 +13,7 @@ const routes = [
   {
     path: "/",
     name: "Index",
+    exact: true,
     component: lazy(() => import("../containers/Index/index"))
   }
 ];

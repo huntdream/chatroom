@@ -8,6 +8,9 @@ import {
 } from "react-router-dom";
 import createHistory from "history/createBrowserHistory";
 
+import Loading from "./components/Loading";
+import Navbar from "./components/Navbar";
+
 import store from "./redux/store";
 
 import "./App.sass";
@@ -20,22 +23,28 @@ class App extends React.Component {
     return (
       <Provider store={store}>
         <Router history={history}>
-          <div className="app-container">
-            <Switch>
-              {routes.map(({ path, name, component: C }) => {
-                return (
-                  <Route
-                    path={path}
-                    key={path}
-                    render={() => (
-                      <React.Suspense fallback={<div>Loading</div>}>
-                        <C />
-                      </React.Suspense>
-                    )}
-                  />
-                );
-              })}
-            </Switch>
+          <div className="app">
+            <Navbar />
+            <div className="container">
+              <div className="container-inner">
+                <Switch>
+                  {routes.map(({ path, name, exact, component: View }) => {
+                    return (
+                      <Route
+                        path={path}
+                        key={path}
+                        exact={exact}
+                        render={() => (
+                          <React.Suspense fallback={<Loading />}>
+                            <View />
+                          </React.Suspense>
+                        )}
+                      />
+                    );
+                  })}
+                </Switch>
+              </div>
+            </div>
           </div>
         </Router>
       </Provider>

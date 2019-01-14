@@ -1,27 +1,13 @@
 import * as React from "react";
 import { NavLink } from "react-router-dom";
+import routes from "../../routes";
 
 import "./style.sass";
-
-const links = [
-  {
-    name: "Home",
-    path: "/"
-  },
-  {
-    name: "Article",
-    path: "article"
-  },
-  {
-    name: "About",
-    path: "about"
-  }
-];
 
 class Navbar extends React.Component<any, any> {
   // render Navlinks
   renderLinks = () =>
-    links.map(link => (
+    routes.map(link => (
       <NavLink to={link.path} key={link.path} className="nav-link">
         {link.name}
       </NavLink>

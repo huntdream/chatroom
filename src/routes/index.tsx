@@ -15,6 +15,12 @@ const routes = [
     name: "Index",
     exact: true,
     component: lazy(() => import("../containers/Index/index"))
+  },
+  {
+    path: "/new",
+    name: "New",
+    exact: true,
+    component: lazy(() => import("../containers/New"))
   }
 ];
 

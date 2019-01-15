@@ -1,20 +1,16 @@
-import * as React from "react";
-import { Provider } from "react-redux";
-import {
-  BrowserRouter as router,
-  Route,
-  Router,
-  Switch
-} from "react-router-dom";
-import createHistory from "history/createBrowserHistory";
+import * as React from 'react';
+import { Provider } from 'react-redux';
+import { BrowserRouter as router, Router, Switch } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
 
-import Loading from "./components/Loading";
-import Navbar from "./components/Navbar";
+import Navbar from './components/Navbar';
+import RouteWrapper from './components/RouteWrapper';
+import Loading from './components/Loading';
 
-import store from "./redux/store";
+import store from './redux/store';
 
-import "./App.sass";
-import routes from "./routes";
+import './App.sass';
+import routes from './routes';
 
 const history = createHistory();
 
@@ -28,17 +24,14 @@ class App extends React.Component {
             <div className="container">
               <div className="container-inner">
                 <Switch>
-                  {routes.map(({ path, name, exact, component: View }) => {
+                  {routes.map(({ path, name, exact, component }) => {
                     return (
-                      <Route
+                      <RouteWrapper
                         path={path}
-                        key={path}
+                        name={name}
                         exact={exact}
-                        render={() => (
-                          <React.Suspense fallback={<Loading />}>
-                            <View />
-                          </React.Suspense>
-                        )}
+                        key={path}
+                        component={component}
                       />
                     );
                   })}

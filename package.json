@@ -23,7 +23,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "tslint -c tslint.json --fix 'src/**/*.{ts,tsx}'"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -43,6 +44,10 @@
     "@types/react": "^16.7.9",
     "@types/react-dom": "^16.0.11",
     "@types/react-redux": "^6.0.10",
-    "@types/react-router-dom": "^4.3.1"
+    "@types/react-router-dom": "^4.3.1",
+    "tslint": "^5.12.1",
+    "tslint-config-prettier": "^1.17.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-react": "^3.6.0"
   }
 }

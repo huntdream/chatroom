@@ -14,14 +14,14 @@ const routes = [
     path: "/",
     name: "Index",
     exact: true,
-    component: lazy(() => import("../containers/Index/index"))
+    component: lazy(() => import("../containers/Index/index")),
   },
   {
     path: "/new",
     name: "New",
     exact: true,
-    component: lazy(() => import("../containers/New"))
-  }
+    component: lazy(() => import("../containers/New")),
+  },
 ];
 
 export default routes;

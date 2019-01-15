@@ -1,9 +1,9 @@
-import * as React from "react";
-import { Editor, EditorState, RichUtils } from "draft-js";
-import StyleButton from "./StyleButton";
-import "draft-js/dist/Draft.css";
+import * as React from 'react';
+import { Editor, EditorState, RichUtils } from 'draft-js';
+import StyleButton from './StyleButton';
+import 'draft-js/dist/Draft.css';
 
-import "./style.sass";
+import './style.sass';
 
 interface State {
   editorState: EditorState;
@@ -11,13 +11,13 @@ interface State {
 
 const styleConfig = [
   {
-    label: "B",
-    style: "BOLD"
+    label: 'B',
+    style: 'BOLD',
   },
   {
-    label: "I",
-    style: "ITALIC"
-  }
+    label: 'I',
+    style: 'ITALIC',
+  },
 ];
 
 class MyEditor extends React.Component<{}, State> {
@@ -26,7 +26,7 @@ class MyEditor extends React.Component<{}, State> {
   constructor(props: any) {
     super(props);
     this.state = {
-      editorState: EditorState.createEmpty()
+      editorState: EditorState.createEmpty(),
     };
     this.editorRef = React.createRef();
   }
@@ -41,15 +41,15 @@ class MyEditor extends React.Component<{}, State> {
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
       this.onChange(newState);
-      return "handled";
+      return 'handled';
     }
-    return "not-handled";
+    return 'not-handled';
   };
 
   // Update state
   onChange = (editorState: any) => {
     this.setState({
-      editorState
+      editorState,
     });
   };
 
@@ -71,6 +71,7 @@ class MyEditor extends React.Component<{}, State> {
     styleConfig.map(item => (
       <StyleButton
         item={item}
+        key={item.style}
         isInlineStyleActive={this.isInlineStyleActive}
         toggleInlineStyle={this.toggleInlineStyle}
       />

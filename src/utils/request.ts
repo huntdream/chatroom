@@ -2,7 +2,7 @@ import axios from "axios";
 import { baseURL } from "../config";
 
 const request = axios.create({
-  baseURL: baseURL
+  baseURL: baseURL,
 });
 
 request.interceptors.request.use(
@@ -11,7 +11,7 @@ request.interceptors.request.use(
   },
   err => {
     console.log(err.message);
-  }
+  },
 );
 
 request.interceptors.response.use(
@@ -20,7 +20,7 @@ request.interceptors.response.use(
   },
   err => {
     console.log(err.message);
-  }
+  },
 );
 
 export default request;

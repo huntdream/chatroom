@@ -5,7 +5,7 @@ export const greeting = (name: string, age: number): any => {
     url: `/hello`,
     params: {
       name,
-      age
-    }
+      age,
+    },
   });
 };

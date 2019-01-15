@@ -21,13 +21,13 @@ class Button extends React.Component<Props, any> {
   static defaultProps = {
     color: 'primary',
     prefix: 'btn',
-    type: 'button'
+    type: 'button',
   };
 
   constructor(props: Props) {
     super(props);
     this.state = {
-      isLoading: false
+      isLoading: false,
     };
   }
 
@@ -42,7 +42,7 @@ class Button extends React.Component<Props, any> {
     const { children, color, icon, prefix, type } = this.props;
     const classes = classNames(prefix, {
       [`${prefix}--${color}`]: color,
-      [`${prefix}--icon`]: icon
+      [`${prefix}--icon`]: icon,
     });
     return (
       <button type={type} className={classes} onClick={this.handleClick}>

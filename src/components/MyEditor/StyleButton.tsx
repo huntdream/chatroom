@@ -4,7 +4,7 @@ import classnames from "classnames";
 const StyleButton = (props: any) => (
   <button
     className={classnames("controller-item", {
-      active: props.isInlineStyleActive(props.item.style)
+      active: props.isInlineStyleActive(props.item.style),
     })}
     onMouseDown={event => props.toggleInlineStyle(event, props.item.style)}
     key={props.item.style}

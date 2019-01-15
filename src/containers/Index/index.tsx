@@ -5,7 +5,7 @@ import { greeting } from "../../api/hello";
 
 class Index extends React.Component {
   state = {
-    greeting: "hello"
+    greeting: "hello",
   };
   componentDidMount() {}
   render() {

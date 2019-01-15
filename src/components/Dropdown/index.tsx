@@ -17,13 +17,13 @@ export type Props = {} & DropdownProps;
 
 class Dropdown extends React.Component<Props, any> {
   static defaultProps = {
-    trigger: 'hover'
+    trigger: 'hover',
   };
 
   constructor(props: Props) {
     super(props);
     this.state = {
-      isShow: false
+      isShow: false,
     };
   }
 
@@ -32,7 +32,7 @@ class Dropdown extends React.Component<Props, any> {
     const { trigger } = this.props;
     if (trigger === 'click') {
       this.setState({
-        isShow: true
+        isShow: true,
       });
     }
   };
@@ -41,7 +41,7 @@ class Dropdown extends React.Component<Props, any> {
     const { children, render, style, trigger } = this.props;
     const { isShow } = this.state;
     const classes = classNames('dropdown', `dropdown__${trigger}`, {
-      show: isShow
+      show: isShow,
     });
     return (
       <div className={classes} onClick={this._onClick}>

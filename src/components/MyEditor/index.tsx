@@ -5,19 +5,19 @@ import 'draft-js/dist/Draft.css';
 
 import './style.sass';
 
-interface State {
+export interface State {
   editorState: EditorState;
 }
 
 const styleConfig = [
   {
     label: 'B',
-    style: 'BOLD',
+    style: 'BOLD'
   },
   {
     label: 'I',
-    style: 'ITALIC',
-  },
+    style: 'ITALIC'
+  }
 ];
 
 class MyEditor extends React.Component<{}, State> {
@@ -26,7 +26,7 @@ class MyEditor extends React.Component<{}, State> {
   constructor(props: any) {
     super(props);
     this.state = {
-      editorState: EditorState.createEmpty(),
+      editorState: EditorState.createEmpty()
     };
     this.editorRef = React.createRef();
   }
@@ -49,7 +49,7 @@ class MyEditor extends React.Component<{}, State> {
   // Update state
   onChange = (editorState: any) => {
     this.setState({
-      editorState,
+      editorState
     });
   };
 

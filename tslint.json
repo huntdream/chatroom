@@ -37,10 +37,10 @@
     "space-in-parens": true,
     "switch-default": true,
     "trailing-comma": [
-      true,
+      false,
       {
         "singleline": "never",
-        "multiline": "always",
+        "multiline": "never",
         "esSpecCompliant": true
       }
     ],

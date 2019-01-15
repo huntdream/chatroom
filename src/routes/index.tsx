@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import { lazy } from 'react';
 
 /**
  * route config
@@ -11,17 +11,17 @@ import { lazy } from "react";
 
 const routes = [
   {
-    path: "/",
-    name: "Index",
+    path: '/',
+    name: 'Index',
     exact: true,
-    component: lazy(() => import("../containers/Index/index")),
+    component: lazy(() => import('../containers/Index/index'))
   },
   {
-    path: "/new",
-    name: "New",
+    path: '/new',
+    name: 'New',
     exact: true,
-    component: lazy(() => import("../containers/New")),
-  },
+    component: lazy(() => import('../containers/New'))
+  }
 ];
 
 export default routes;

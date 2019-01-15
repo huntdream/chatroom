@@ -1,5 +1,17 @@
-import * as React from "react";
+import * as React from 'react';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
 
-const Loading = () => <div>Loading</div>;
+class Loading extends React.Component<{}, {}> {
+  componentDidMount() {
+    NProgress.start();
+  }
+  componentWillUnmount() {
+    NProgress.done();
+  }
+  render() {
+    return <div>Loading</div>;
+  }
+}
 
 export default Loading;

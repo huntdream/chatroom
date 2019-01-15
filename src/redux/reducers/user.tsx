@@ -1,6 +1,6 @@
 const initialState = {};
 
-const user = (state = initialState, action) => {
+const user = (state = initialState, action: any) => {
   switch (action.type) {
     case 'Login':
       return { ...state };

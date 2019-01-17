@@ -77,7 +77,7 @@ class MyEditor extends React.Component<{}, State> {
   }
 
   // Handle key command
-  handleKeyCommand = (command: any, editorState: any) => {
+  handleKeyCommand = (command: any, editorState: EditorState) => {
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
       this.onChange(newState);
@@ -86,8 +86,7 @@ class MyEditor extends React.Component<{}, State> {
     return 'not-handled';
   };
 
-  // Update state
-  onChange = (editorState: any) => {
+  onChange = (editorState: EditorState) => {
     this.setState({
       editorState
     });

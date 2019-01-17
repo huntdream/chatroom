@@ -9,7 +9,14 @@ export interface State {
   editorState: EditorState;
 }
 
-const styleConfig = [
+export interface StyleItem {
+  label: string;
+  style: string;
+}
+
+export interface StyleConfig extends Array<any> {
+  [index: number]: StyleItem;
+}
   {
     label: 'B',
     style: 'BOLD'

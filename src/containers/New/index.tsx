@@ -10,7 +10,7 @@ class New extends React.Component {
     return (
       <div className="new-wrap">
         <div className="new-title">
-          <Input style={{ width: '200px' }} />
+          <Input placeholder="Title" style={{ fontSize: '2.4rem' }} />
         </div>
         <div className="new-editor">
           <MyEditor />

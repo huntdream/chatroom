@@ -3,14 +3,15 @@ import classNames from 'classnames';
 import './style.sass';
 
 export type ButtonTypes = 'button' | 'submit' | 'reset';
-export type ButtonColors = 'primary';
+export type ButtonColors = 'primary' | 'secondary';
 
 export interface ButtonProps {
-  children?: React.ReactNode;
+  children: React.ReactNode;
   color?: ButtonColors;
   icon?: string;
   prefix?: string;
   type?: ButtonTypes;
+  loading?: boolean;
 }
 
 export type Props = {
@@ -22,13 +23,11 @@ class Button extends React.Component<Props, any> {
     color: 'primary',
     prefix: 'btn',
     type: 'button',
+    loading: false
   };
 
   constructor(props: Props) {
     super(props);
-    this.state = {
-      isLoading: false,
-    };
   }
 
   handleClick: React.MouseEventHandler<HTMLButtonElement> = e => {
@@ -42,7 +41,7 @@ class Button extends React.Component<Props, any> {
     const { children, color, icon, prefix, type } = this.props;
     const classes = classNames(prefix, {
       [`${prefix}--${color}`]: color,
-      [`${prefix}--icon`]: icon,
+      [`${prefix}--icon`]: icon
     });
     return (
       <button type={type} className={classes} onClick={this.handleClick}>

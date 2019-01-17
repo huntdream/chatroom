@@ -1,12 +1,19 @@
-import * as React from "react";
-import classnames from "classnames";
+import * as React from 'react';
+import classnames from 'classnames';
+import { StyleItem } from '.';
 
-const StyleButton = (props: any) => (
+export interface StyleButtonProps {
+  item: StyleItem;
+  toggleStyle: Function;
+  isStyleActive: Function;
+}
+
+const StyleButton = (props: StyleButtonProps) => (
   <button
-    className={classnames("controller-item", {
-      active: props.isInlineStyleActive(props.item.style),
+    className={classnames('controller-item', {
+      active: props.isStyleActive(props.item.style)
     })}
-    onMouseDown={event => props.toggleInlineStyle(event, props.item.style)}
+    onMouseDown={event => props.toggleStyle(event, props.item.style)}
     key={props.item.style}
   >
     {props.item.label}

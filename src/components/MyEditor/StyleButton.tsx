@@ -1,11 +1,11 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import { StyleItem } from '.';
+import { StyleItem, CheckActiveFunc } from '.';
 
 export interface StyleButtonProps {
   item: StyleItem;
   toggleStyle: Function;
-  isStyleActive: Function;
+  isStyleActive: CheckActiveFunc;
 }
 
 const StyleButton = (props: StyleButtonProps) => (

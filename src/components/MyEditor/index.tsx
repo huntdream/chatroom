@@ -14,6 +14,10 @@ export interface StyleItem {
   style: string;
 }
 
+export interface CheckActiveFunc {
+  (style: string): boolean;
+}
+
 export interface StyleConfig extends Array<any> {
   [index: number]: StyleItem;
 }
@@ -101,7 +105,7 @@ class MyEditor extends React.Component<{}, State> {
   };
 
   // Check if inline style is active
-  isInlineStyleActive = (style: string) => {
+  isInlineStyleActive: CheckActiveFunc = (style: string) => {
     const { editorState } = this.state;
     return editorState.getCurrentInlineStyle().has(style);
   };
@@ -114,7 +118,7 @@ class MyEditor extends React.Component<{}, State> {
   };
 
   // Check if block style is active
-  isBlockStyleActive = (style: string) => {
+  isBlockStyleActive: CheckActiveFunc = (style: string) => {
     const { editorState } = this.state;
     const selection = editorState.getSelection();
     return (

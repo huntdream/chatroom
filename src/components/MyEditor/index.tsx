@@ -86,33 +86,64 @@ class MyEditor extends React.Component<{}, State> {
     return 'not-handled';
   };
 
+  // Update editorState
   onChange = (editorState: EditorState) => {
     this.setState({
       editorState
     });
   };
 
-  // Handle click for controller items
+  // Toggle Inline Style
   toggleInlineStyle = (event: React.MouseEvent, type: string) => {
     event.preventDefault();
     const { editorState } = this.state;
     this.onChange(RichUtils.toggleInlineStyle(editorState, type));
   };
 
-  // Is inline style active
+  // Check if inline style is active
   isInlineStyleActive = (style: string) => {
     const { editorState } = this.state;
     return editorState.getCurrentInlineStyle().has(style);
   };
 
-  // Render controller items
-  renderController = () =>
-    styleConfig.map(item => (
+  // Toggle block style
+  toggleBlockStyle = (event: React.MouseEvent, type: string) => {
+    event.preventDefault();
+    const { editorState } = this.state;
+    this.onChange(RichUtils.toggleBlockType(editorState, type));
+  };
+
+  // Check if block style is active
+  isBlockStyleActive = (style: string) => {
+    const { editorState } = this.state;
+    const selection = editorState.getSelection();
+    return (
+      editorState
+        .getCurrentContent()
+        .getBlockForKey(selection.getStartKey())
+        .getType() === style
+    );
+  };
+
+  // Render block style controls
+  renderBlockStyle = () =>
+    blockStyleConfig.map((item: StyleItem) => (
       <StyleButton
         item={item}
         key={item.style}
-        isInlineStyleActive={this.isInlineStyleActive}
-        toggleInlineStyle={this.toggleInlineStyle}
+        toggleStyle={this.toggleBlockStyle}
+        isStyleActive={this.isBlockStyleActive}
+      />
+    ));
+
+  // Render inline style controls
+  renderInlineStyle = () =>
+    inlineStyleConfig.map((item: StyleItem) => (
+      <StyleButton
+        item={item}
+        key={item.style}
+        toggleStyle={this.toggleInlineStyle}
+        isStyleActive={this.isInlineStyleActive}
       />
     ));
 
@@ -120,7 +151,10 @@ class MyEditor extends React.Component<{}, State> {
     const { editorState } = this.state;
     return (
       <div className="my-editor">
-        <div className="my-editor-controller">{this.renderController()}</div>
+        <div className="my-editor-controller">
+          {this.renderBlockStyle()}
+          {this.renderInlineStyle()}
+        </div>
         <Editor
           editorState={editorState}
           onChange={this.onChange}

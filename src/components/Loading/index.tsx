@@ -10,7 +10,7 @@ class Loading extends React.Component<{}, {}> {
     NProgress.done();
   }
   render() {
-    return <div>Loading</div>;
+    return <div />;
   }
 }
 

@@ -22,6 +22,11 @@ const routes = [
     exact: true,
     component: lazy(() => import('../containers/New'))
   }
+  /**
+   * {
+   *  name:'诗意'
+   * }
+   */
 ];
 
 export default routes;

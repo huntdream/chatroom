@@ -1,5 +1,7 @@
 import * as React from 'react';
+import Ink from 'react-ink';
 import classNames from 'classnames';
+
 import './style.sass';
 
 export type ButtonTypes = 'button' | 'submit' | 'reset';
@@ -45,10 +47,11 @@ class Button extends React.Component<Props, any> {
     });
     return (
       <button type={type} className={classes} onClick={this.handleClick}>
-        <div className="btn-content">
+        <span className="btn-content">
           {children}
           {icon && <i className="material-icons">{icon}</i>}
-        </div>
+        </span>
+        <Ink />
       </button>
     );
   }

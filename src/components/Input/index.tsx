@@ -21,7 +21,6 @@ export interface InputProps {
   onBlur?: React.FormEventHandler;
   onChange?: React.FormEventHandler;
   placeholder?: string;
-  defaultValue?: string;
 }
 
 export interface InputState {
@@ -30,16 +29,15 @@ export interface InputState {
 }
 
 class Input extends React.Component<InputProps, InputState> {
-  static defaultProps: InputProps = {
-    type: 'text',
-    defaultValue: ''
+  static defaultProps = {
+    type: 'text'
   };
 
   constructor(props: InputProps) {
     super(props);
     this.state = {
       focused: false,
-      value: this.props.defaultValue
+      value: ''
     };
   }
 

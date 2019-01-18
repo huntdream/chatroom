@@ -1,15 +1,16 @@
-import * as React from "react";
-import "./style.sass";
+import * as React from 'react';
+import ArticleList from '../../components/ArticleList';
 
-import { greeting } from "../../api/hello";
+import './style.sass';
 
 class Index extends React.Component {
-  state = {
-    greeting: "hello",
-  };
   componentDidMount() {}
   render() {
-    return <div className="index">{this.state.greeting}</div>;
+    return (
+      <div className="index">
+        <ArticleList />
+      </div>
+    );
   }
 }
 

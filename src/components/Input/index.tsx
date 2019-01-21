@@ -14,6 +14,7 @@ export interface ChangeEventHanlder {
 }
 
 export interface InputProps {
+  id?: string;
   label?: string;
   type?: InputTypes;
   style?: React.CSSProperties;
@@ -83,7 +84,7 @@ class Input extends React.Component<InputProps, InputState> {
   };
 
   render() {
-    const { label, type, style, placeholder } = this.props;
+    const { id, label, type, style, placeholder } = this.props;
     const { focused, value } = this.state;
 
     const wrapClass = classnames(
@@ -95,6 +96,7 @@ class Input extends React.Component<InputProps, InputState> {
       <div className={wrapClass} style={style}>
         <div className="input-body">
           <input
+            id={id}
             type={type}
             className="input-field"
             onFocus={this._onFocus}
@@ -104,7 +106,9 @@ class Input extends React.Component<InputProps, InputState> {
             placeholder={!label || focused ? placeholder : ''}
           />
         </div>
-        <label className="input-label">{label}</label>
+        <label className="input-label" htmlFor={id}>
+          {label}
+        </label>
       </div>
     );
   }

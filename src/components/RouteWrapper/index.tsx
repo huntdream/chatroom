@@ -1,7 +1,6 @@
 import * as React from 'react';
-import NProgress from 'nprogress';
-import 'nprogress/nprogress.css';
 import { Route } from 'react-router-dom';
+import DocumentTitle from 'react-document-title';
 import Loading from '../Loading';
 
 export interface RouteWrapperProps {
@@ -27,9 +26,16 @@ class RouteWrapper extends React.Component<RouteWrapperProps, {}> {
   render() {
     const { path, name, exact, component: View } = this.props;
     return (
-      <React.Suspense fallback={<Loading />}>
-        <Route path={path} name={name} exact={exact} render={() => <View />} />
-      </React.Suspense>
+      <DocumentTitle title={name}>
+        <React.Suspense fallback={<Loading />}>
+          <Route
+            path={path}
+            name={name}
+            exact={exact}
+            render={() => <View />}
+          />
+        </React.Suspense>
+      </DocumentTitle>
     );
   }
 }

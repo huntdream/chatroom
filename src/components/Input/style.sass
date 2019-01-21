@@ -7,11 +7,11 @@
       &:before
         border-bottom: 2px solid rgba(0, 0, 0, 0.87)
   .input-label
+    cursor: inherit
     position: absolute
     bottom: 0
     color: rgba(0, 0, 0, 0.54);
     transform-origin: top left
-    user-select: none
     transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms
   .input-body
     width: 100%
@@ -56,4 +56,3 @@
   &.input-wrap--notempty
     .input-label
       transform: translate(0,-1em) scale(0.75)
-    

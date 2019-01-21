@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Editor, EditorState, RichUtils } from 'draft-js';
+import { Editor, EditorState, RichUtils, convertToRaw } from 'draft-js';
 import StyleButton from './StyleButton';
 import 'draft-js/dist/Draft.css';
 
@@ -14,8 +14,12 @@ export interface StyleItem {
   style: string;
 }
 
-export interface CheckActiveFunc {
+export interface CheckActive {
   (style: string): boolean;
+}
+
+export interface ToggleStyle {
+  (event: React.MouseEvent, style: string): void;
 }
 
 export interface StyleConfig extends Array<any> {
@@ -105,20 +109,20 @@ class MyEditor extends React.Component<{}, State> {
   };
 
   // Check if inline style is active
-  isInlineStyleActive: CheckActiveFunc = (style: string) => {
+  isInlineStyleActive: CheckActive = (style: string) => {
     const { editorState } = this.state;
     return editorState.getCurrentInlineStyle().has(style);
   };
 
   // Toggle block style
-  toggleBlockStyle = (event: React.MouseEvent, type: string) => {
+  toggleBlockStyle: ToggleStyle = (event, type) => {
     event.preventDefault();
     const { editorState } = this.state;
     this.onChange(RichUtils.toggleBlockType(editorState, type));
   };
 
   // Check if block style is active
-  isBlockStyleActive: CheckActiveFunc = (style: string) => {
+  isBlockStyleActive: CheckActive = style => {
     const { editorState } = this.state;
     const selection = editorState.getSelection();
     return (

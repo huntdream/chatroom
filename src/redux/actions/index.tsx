@@ -1,0 +1,1 @@
+export { getArticleList } from './article';

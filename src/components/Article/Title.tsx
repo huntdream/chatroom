@@ -9,9 +9,9 @@ function Title(props: TitleProps) {
   const { children, style } = props;
 
   return (
-    <h1 style={style} className="article-title">
+    <h2 style={style} className="article-title">
       {children}
-    </h1>
+    </h2>
   );
 }
 

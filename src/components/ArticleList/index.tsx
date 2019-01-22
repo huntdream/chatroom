@@ -13,6 +13,7 @@ export interface ArticleType {
   author: string;
   date?: string;
   content: string;
+  id: string;
 }
 
 export interface ArticlesType extends Array<ArticleType> {

@@ -12,11 +12,11 @@ export interface ArticleProps {
 class Article extends React.Component<ArticleProps, any> {
   render() {
     const { article } = this.props;
-    const { title, author, date, content } = article;
+    const { title, author, date, content, id } = article;
 
     return (
       <div className="article-wrap">
-        <Title>{title}</Title>
+        <Title id={id}>{title}</Title>
         <Author>{author}</Author>
         <span>{date}</span>
         <div>{content}</div>

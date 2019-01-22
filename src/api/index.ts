@@ -1,5 +1,5 @@
-import * as hello from "./hello";
+import * as article from './article';
 
 export default {
-  hello,
+  article
 };

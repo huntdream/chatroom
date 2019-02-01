@@ -6,3 +6,8 @@ export const getArticleList = (params: any): any => {
     data: params
   });
 };
+
+// GET an Article by id
+export const getArticle = (params: any): any => {
+  return request(`/article/query?id=${params}`);
+};

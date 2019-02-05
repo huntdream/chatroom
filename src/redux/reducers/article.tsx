@@ -1,28 +1,35 @@
-import { GET_ARTICLE_LIST, SAVE_ARTICLE_LIST } from '../constants';
+import { ALL_ARTICLE, ARTICLE } from '../actions';
 
 interface State {
   list: Array<any>;
+  piece: any;
 }
 
-type Action = {
-  type: string;
-  list: Array<any>;
-};
-
 const initialState: State = {
-  list: []
+  list: [],
+  piece: ''
 };
 
-const article = (state: State = initialState, action: Action) => {
+const articles = (state: State = initialState, action: any) => {
   switch (action.type) {
-    case SAVE_ARTICLE_LIST:
+    case ALL_ARTICLE.SUCCESS:
       return {
         ...state,
         list: action.list
+      };
+    case ALL_ARTICLE.FAILURE:
+      return {
+        ...state,
+        error: action.error
+      };
+    case ARTICLE.SUCCESS:
+      return {
+        ...state,
+        piece: action.piece
       };
     default:
       return state;
   }
 };
 
-export default article;
+export default articles;

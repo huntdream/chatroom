@@ -10,7 +10,7 @@ function Title(props: TitleProps) {
   const { style, render } = props;
 
   return (
-    <h2 style={style} className="article-title">
+    <h2 style={style} className="articleitem-title">
       {render()}
     </h2>
   );

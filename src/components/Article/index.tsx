@@ -1,25 +1,28 @@
 import * as React from 'react';
-import Title from './Title';
-import Author from './Author';
+
 import { ArticleType } from '../ArticleList';
 
 import './style.sass';
 
-export interface ArticleProps {
+export interface Props {
   article: ArticleType;
 }
 
-class Article extends React.Component<ArticleProps, any> {
+interface States {}
+
+class Article extends React.Component<Props, States> {
+  componentDidMount() {}
+
   render() {
     const { article } = this.props;
-    const { title, author, date, content, id } = article;
-
+    const { title, author, date, content } = article;
     return (
       <div className="article-wrap">
-        <Title id={id}>{title}</Title>
-        <Author>{author}</Author>
-        <span>{date}</span>
-        <div>{content}</div>
+        <h2 className="article-title">{title}</h2>
+        <div className="article-info">
+          <span className="article-author">{author}</span>
+        </div>
+        <div className="article-content">{content}</div>
       </div>
     );
   }

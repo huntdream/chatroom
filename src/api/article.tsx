@@ -7,7 +7,7 @@ export const getArticleList = (params: any): any => {
   });
 };
 
-// GET an Article by id
+// GET an Article
 export const getArticle = (params: any): any => {
-  return request(`/article/query?id=${params}`);
+  return request(`/article/query?${params.key}=${params.value}`);
 };

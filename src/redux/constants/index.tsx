@@ -1,2 +1,4 @@
 export const GET_ARTICLE_LIST = 'GET_ARTICLE_LIST';
 export const SAVE_ARTICLE_LIST = 'SAVE_ARTICLE_LIST';
+export const GET_ARTICLE = 'GET_ARTICLE';
+export const SAVE_ARTICLE = 'SAVE_ARTICLE';

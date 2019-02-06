@@ -31,7 +31,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "analyze": "webpack-bundle-analyzer build/bundle-stats.json -m server -r build/bundle-stats.html -O",
+    "build": "react-scripts build --stats",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "tslint -c tslint.json --fix 'src/**/*.{ts,tsx}'"
@@ -60,6 +61,7 @@
     "tslint": "^5.12.1",
     "tslint-config-prettier": "^1.17.0",
     "tslint-eslint-rules": "^5.4.0",
-    "tslint-react": "^3.6.0"
+    "tslint-react": "^3.6.0",
+    "webpack-bundle-analyzer": "^3.0.3"
   }
 }

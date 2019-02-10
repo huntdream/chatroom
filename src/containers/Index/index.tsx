@@ -14,7 +14,9 @@ interface States {}
 
 class Index extends React.Component<Props, States> {
   componentDidMount() {
-    this.props.getarticlelist({ page: 1 });
+    if (!this.props.articlelist.length) {
+      this.props.getarticlelist({ page: 1 });
+    }
   }
   render() {
     const { articlelist } = this.props;

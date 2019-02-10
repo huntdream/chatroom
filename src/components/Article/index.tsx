@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Editor, convertFromRaw, EditorState, ContentBlock } from 'draft-js';
 
 import { ArticleType } from '../ArticleList';
 
@@ -8,10 +9,32 @@ export interface Props {
   article: ArticleType;
 }
 
-interface States {}
+interface States {
+  editorState: EditorState;
+}
 
 class Article extends React.Component<Props, States> {
   componentDidMount() {}
+
+  // Initial Content
+  convertToEditorState = (content: string) => {
+    return EditorState.createWithContent(convertFromRaw(JSON.parse(content)));
+  };
+
+  myBlockStyleFn = (contentBlock: ContentBlock) => {
+    const type = contentBlock.getType();
+    switch (type) {
+      case 'code-block':
+        return 'my-code-block';
+      case 'blockquote':
+        return 'my-blockquote';
+      default:
+        break;
+    }
+  };
+
+  // noop
+  onChange = () => {};
 
   render() {
     const { article } = this.props;
@@ -22,7 +45,16 @@ class Article extends React.Component<Props, States> {
         <div className="article-info">
           <span className="article-author">{author}</span>
         </div>
-        <div className="article-content">{content}</div>
+        <div className="article-content">
+          {content && (
+            <Editor
+              onChange={this.onChange}
+              blockStyleFn={this.myBlockStyleFn}
+              readOnly
+              editorState={this.convertToEditorState(content)}
+            />
+          )}
+        </div>
       </div>
     );
   }

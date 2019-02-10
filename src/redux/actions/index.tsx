@@ -6,7 +6,7 @@ import {
 } from '../constants';
 
 export interface Action {
-  (type: string, payload: any): any;
+  (type: string, payload?: any): any;
 }
 
 // Generate request types
@@ -28,6 +28,7 @@ const action: Action = (type, payload = {}) => ({
 
 export const ALL_ARTICLE = createRequestTypes('ALL_ARTICLE');
 export const ARTICLE = createRequestTypes('ARTICLE');
+export const ADD_ARTICLE = createRequestTypes('ADD_ARTICLE');
 
 export const allArticle = {
   request: (payload: any) => action(ALL_ARTICLE[REQUEST], { payload }),
@@ -39,4 +40,10 @@ export const article = {
   request: (payload: any) => action(ARTICLE[REQUEST], { payload }),
   success: (piece: any) => action(ARTICLE[SUCCESS], { piece }),
   failure: (error: any) => action(ARTICLE[FALIURE], { error })
+};
+
+export const addArticle = {
+  request: (payload: any) => action(ADD_ARTICLE[REQUEST], { payload }),
+  success: () => action(ADD_ARTICLE[SUCCESS]),
+  failure: (error: any) => action(ADD_ARTICLE[FALIURE], { error })
 };

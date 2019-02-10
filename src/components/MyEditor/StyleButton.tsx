@@ -1,6 +1,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import { StyleItem, CheckActive, ToggleStyle } from '.';
+import { CheckActive, ToggleStyle } from './Edit';
+import { StyleItem } from './StyleConfig';
 
 export interface StyleButtonProps {
   item: StyleItem;

@@ -27,12 +27,14 @@ interface States {}
 
 class Page extends React.Component<Props, States> {
   componentDidMount() {
-    // const link = this.props.match.params.link;
-    const value = this.props.router.location.pathname
-      .split('/')[2]
-      .split('-')[1];
+    const value = this.parseSuffixCode(this.props.router.location.pathname);
     this.props.getarticle({ key: 'suffixCode', value });
   }
+
+  parseSuffixCode = (pathname: string) => {
+    const titleArray = pathname.split('/')[2].split('-');
+    return titleArray[titleArray.length - 1];
+  };
 
   render() {
     const { piece } = this.props;

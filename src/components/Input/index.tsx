@@ -18,9 +18,10 @@ export interface InputProps {
   label?: string;
   type?: InputTypes;
   style?: React.CSSProperties;
-  onFocus?: React.FormEventHandler;
-  onBlur?: React.FormEventHandler;
-  onChange?: React.FormEventHandler;
+  onFocus?: InputEventHanlder;
+  onBlur?: InputEventHanlder;
+  onChange?: ChangeEventHanlder;
+  autocomplete?: string;
   placeholder?: string;
   defaultValue?: string;
 }
@@ -33,7 +34,8 @@ export interface InputState {
 class Input extends React.Component<InputProps, InputState> {
   static defaultProps: InputProps = {
     type: 'text',
-    defaultValue: ''
+    defaultValue: '',
+    autocomplete: 'off'
   };
 
   constructor(props: InputProps) {
@@ -75,7 +77,7 @@ class Input extends React.Component<InputProps, InputState> {
     const { onChange } = this.props;
 
     this.setState({
-      value: event.currentTarget.value
+      value: event.target.value
     });
 
     if (onChange) {
@@ -84,7 +86,7 @@ class Input extends React.Component<InputProps, InputState> {
   };
 
   render() {
-    const { id, label, type, style, placeholder } = this.props;
+    const { id, label, type, style, placeholder, autocomplete } = this.props;
     const { focused, value } = this.state;
 
     const wrapClass = classnames(
@@ -96,6 +98,7 @@ class Input extends React.Component<InputProps, InputState> {
       <div className={wrapClass} style={style}>
         <div className="input-body">
           <input
+            autoComplete={autocomplete}
             id={id}
             type={type}
             className="input-field"

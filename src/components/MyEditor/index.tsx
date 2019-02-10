@@ -1,175 +1,27 @@
 import * as React from 'react';
-import { Editor, EditorState, RichUtils, convertToRaw } from 'draft-js';
-import StyleButton from './StyleButton';
-import 'draft-js/dist/Draft.css';
+import Edit from './Edit';
 
 import './style.sass';
 
-export interface State {
-  editorState: EditorState;
+export interface Props {
+  setContent?: any;
+  readOnly?: boolean;
+  content?: string;
 }
 
-export interface StyleItem {
-  label: string;
-  style: string;
-}
+export interface States {}
 
-export interface CheckActive {
-  (style: string): boolean;
-}
-
-export interface ToggleStyle {
-  (event: React.MouseEvent, style: string): void;
-}
-
-export interface StyleConfig extends Array<any> {
-  [index: number]: StyleItem;
-}
-
-const blockStyleConfig: StyleConfig = [
-  {
-    label: 'H1',
-    style: 'header-one'
-  },
-  {
-    label: 'H2',
-    style: 'header-two'
-  },
-  {
-    label: 'H3',
-    style: 'header-three'
-  },
-  {
-    label: 'Block',
-    style: 'blockquote'
-  },
-  {
-    label: 'UL',
-    style: 'unordered-list-item'
-  },
-  {
-    label: 'OL',
-    style: 'ordered-list-item'
-  },
-  {
-    label: 'Code',
-    style: 'code-block'
-  }
-];
-
-const inlineStyleConfig: StyleConfig = [
-  {
-    label: 'B',
-    style: 'BOLD'
-  },
-  {
-    label: 'I',
-    style: 'ITALIC'
-  }
-];
-
-class MyEditor extends React.Component<{}, State> {
-  private editorRef: React.RefObject<Editor>;
-
+class MyEditor extends React.Component<Props, States> {
   constructor(props: any) {
     super(props);
-    this.state = {
-      editorState: EditorState.createEmpty()
-    };
-    this.editorRef = React.createRef();
+    this.state = {};
   }
-
-  componentDidMount() {
-    const node = this.editorRef.current;
-    node.focus();
-  }
-
-  // Handle key command
-  handleKeyCommand = (command: any, editorState: EditorState) => {
-    const newState = RichUtils.handleKeyCommand(editorState, command);
-    if (newState) {
-      this.onChange(newState);
-      return 'handled';
-    }
-    return 'not-handled';
-  };
-
-  // Update editorState
-  onChange = (editorState: EditorState) => {
-    this.setState({
-      editorState
-    });
-  };
-
-  // Toggle Inline Style
-  toggleInlineStyle = (event: React.MouseEvent, type: string) => {
-    event.preventDefault();
-    const { editorState } = this.state;
-    this.onChange(RichUtils.toggleInlineStyle(editorState, type));
-  };
-
-  // Check if inline style is active
-  isInlineStyleActive: CheckActive = (style: string) => {
-    const { editorState } = this.state;
-    return editorState.getCurrentInlineStyle().has(style);
-  };
-
-  // Toggle block style
-  toggleBlockStyle: ToggleStyle = (event, type) => {
-    event.preventDefault();
-    const { editorState } = this.state;
-    this.onChange(RichUtils.toggleBlockType(editorState, type));
-  };
-
-  // Check if block style is active
-  isBlockStyleActive: CheckActive = style => {
-    const { editorState } = this.state;
-    const selection = editorState.getSelection();
-    return (
-      editorState
-        .getCurrentContent()
-        .getBlockForKey(selection.getStartKey())
-        .getType() === style
-    );
-  };
-
-  // Render block style controls
-  renderBlockStyle = () =>
-    blockStyleConfig.map((item: StyleItem) => (
-      <StyleButton
-        item={item}
-        key={item.style}
-        toggleStyle={this.toggleBlockStyle}
-        isStyleActive={this.isBlockStyleActive}
-      />
-    ));
-
-  // Render inline style controls
-  renderInlineStyle = () =>
-    inlineStyleConfig.map((item: StyleItem) => (
-      <StyleButton
-        item={item}
-        key={item.style}
-        toggleStyle={this.toggleInlineStyle}
-        isStyleActive={this.isInlineStyleActive}
-      />
-    ));
 
   render() {
-    const { editorState } = this.state;
+    const { setContent, readOnly, content } = this.props;
     return (
-      <div className="my-editor">
-        <div className="my-editor-controller">
-          {this.renderBlockStyle()}
-          {this.renderInlineStyle()}
-        </div>
-        <Editor
-          editorState={editorState}
-          onChange={this.onChange}
-          handleKeyCommand={this.handleKeyCommand}
-          placeholder="Tell a story..."
-          ref={this.editorRef}
-        />
+      <div className="my-editor-wrap">
+        <Edit setContent={setContent} />
       </div>
     );
   }

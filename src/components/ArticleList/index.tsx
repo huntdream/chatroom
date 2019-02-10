@@ -25,7 +25,7 @@ class ArticleList extends React.Component<Props, any> {
   render() {
     const { articlelist } = this.props;
     return (
-      <div className="artile-list">
+      <div className="article-list">
         {articlelist.map((article: ArticleType, index: number) => (
           <ArticleItem article={article} key={index} />
         ))}

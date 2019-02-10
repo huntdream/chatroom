@@ -10,7 +10,9 @@ export interface ArticleProps {
   article: ArticleType;
 }
 
-class ArticleItem extends React.Component<ArticleProps, any> {
+interface States {}
+
+class ArticleItem extends React.Component<ArticleProps, States> {
   render() {
     const { article } = this.props;
     const { title, author, date, content, id, suffixCode } = article;
@@ -19,12 +21,14 @@ class ArticleItem extends React.Component<ArticleProps, any> {
       <div className="articleitem-wrap">
         <Title
           render={() => (
-            <Link to={`/article/${title}-${suffixCode}`}>{title}</Link>
+            <Link to={`/article/${title.split(' ').join('-')}-${suffixCode}`}>
+              {title}
+            </Link>
           )}
         />
         <Author>{author}</Author>
         <span>{date}</span>
-        <div>{content}</div>
+        {/* <div className="articleitem-content">{content}</div> */}
       </div>
     );
   }

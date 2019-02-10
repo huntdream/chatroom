@@ -27,12 +27,18 @@ function* getAllArticle(action: any) {
 }
 
 function* getArticle(action: any) {
+  yield put(actions.article.success({}));
   yield fetchEntity(actions.article, api.article.getArticle, action.payload);
+}
+
+function* addArticle(action: any) {
+  yield fetchEntity(actions.article, api.article.addArticle, action.payload);
 }
 
 export default function* rootSaga() {
   yield all([
     takeEvery(actions.ALL_ARTICLE.REQUEST, getAllArticle),
-    takeEvery(actions.ARTICLE.REQUEST, getArticle)
+    takeEvery(actions.ARTICLE.REQUEST, getArticle),
+    takeEvery(actions.ADD_ARTICLE.REQUEST, addArticle)
   ]);
 }

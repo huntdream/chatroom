@@ -2,7 +2,7 @@ import * as React from 'react';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 
-class Loading extends React.Component<{}, {}> {
+class Loading extends React.PureComponent<{}, {}> {
   componentDidMount() {
     NProgress.start();
   }

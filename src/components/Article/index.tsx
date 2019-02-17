@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Editor, convertFromRaw, EditorState, ContentBlock } from 'draft-js';
-
+import IconText from '../IconText';
 import { ArticleType } from '../ArticleList';
 
 import './style.sass';
@@ -38,12 +38,13 @@ class Article extends React.Component<Props, States> {
 
   render() {
     const { article } = this.props;
-    const { title, author, date, content } = article;
+    const { title, author, createdAt, content } = article;
     return (
       <div className="article-wrap">
         <h2 className="article-title">{title}</h2>
         <div className="article-info">
-          <span className="article-author">{author}</span>
+          <IconText icon="date_range">{createdAt}</IconText>
+          <IconText icon="person">{author}</IconText>
         </div>
         <div className="article-content">
           {content && (

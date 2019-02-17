@@ -7,7 +7,7 @@ import './style.sass';
 export interface ArticleType {
   title: string;
   author: string;
-  date?: string;
+  createdAt?: string;
   content: string;
   id: string;
   suffixCode: string;
@@ -21,15 +21,15 @@ export interface Props {
   articlelist: ArticlesType;
 }
 
-class ArticleList extends React.Component<Props, any> {
+class ArticleList extends React.PureComponent<Props, any> {
   render() {
     const { articlelist } = this.props;
     return (
-      <div className="article-list">
+      <main className="article-list">
         {articlelist.map((article: ArticleType, index: number) => (
           <ArticleItem article={article} key={index} />
         ))}
-      </div>
+      </main>
     );
   }
 }

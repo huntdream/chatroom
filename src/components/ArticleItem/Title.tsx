@@ -3,15 +3,18 @@ import { Link } from 'react-router-dom';
 
 export interface TitleProps {
   style?: React.CSSProperties;
-  render: any;
+  to: string;
+  children: any;
 }
 
 function Title(props: TitleProps) {
-  const { style, render } = props;
+  const { style, to, children } = props;
 
   return (
-    <h2 style={style} className="articleitem-title">
-      {render()}
+    <h2 className="articleitem-title-wrap">
+      <Link to={to} style={style} className="articleitem-title">
+        {children}
+      </Link>
     </h2>
   );
 }

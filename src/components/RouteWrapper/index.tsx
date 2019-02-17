@@ -10,7 +10,7 @@ export interface RouteWrapperProps {
   component: React.LazyExoticComponent<any>;
 }
 
-class RouteWrapper extends React.Component<RouteWrapperProps, {}> {
+class RouteWrapper extends React.PureComponent<RouteWrapperProps, {}> {
   constructor(props: RouteWrapperProps) {
     super(props);
   }

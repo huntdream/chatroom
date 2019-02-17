@@ -33,12 +33,14 @@ class Page extends React.Component<Props, States> {
 
   parseSuffixCode = (pathname: string) => {
     const titleArray = pathname.split('/')[2].split('-');
-    return titleArray[titleArray.length - 1];
+    const code = titleArray.pop();
+    document.title = titleArray.join(' ');
+    return code;
   };
 
   render() {
     const { piece } = this.props;
-    return <Article article={piece} />;
+    return <>{piece.author && <Article article={piece} />}</>;
   }
 }
 

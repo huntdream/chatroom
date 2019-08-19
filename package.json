@@ -5,7 +5,7 @@
   "dependencies": {
     "@types/redux-logger": "^3.0.6",
     "@types/redux-saga": "^0.10.5",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "classnames": "^2.2.6",
     "connected-react-router": "^6.2.2",
     "draft-js": "^0.10.5",
